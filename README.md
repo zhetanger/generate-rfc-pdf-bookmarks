@@ -1,8 +1,10 @@
 # RFC文档添加标签
 
-添加C pdf文档目录标签。
+通过RFC的pdf目录生成标签，方便查看。
 
 # 使用方法
+
+需要先安装python3。
 ```
 $ python add_bookmarks_to_pdf.py foo.pdf
 ```
