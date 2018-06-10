@@ -1,14 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 #-*- coding: utf-8 -*-
-
-__author__ = 'Thomas Jay'
-
 
 import os
 import sys
 from os.path import basename
 from RFC_PDF_Utils import RFCPDFHandler,PDFHandleMode as mode
-
 
 
 def main():

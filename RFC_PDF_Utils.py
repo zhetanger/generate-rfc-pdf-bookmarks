@@ -1,7 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
-
-__author__ = 'Thomas Jay'
 
 import os
 import io
@@ -34,6 +32,7 @@ class RFCPDFHandler(object):
     def __init__(self, pdfFilePath, mode = PDFHandleMode.COPY):
         '''
         用一个PDF文件初始化
+
         :param pdfFilePath: PDF文件路径
         :param mode: 处理PDF文件的模式，默认为PDFHandleMode.COPY模式
         '''
@@ -74,6 +73,7 @@ class RFCPDFHandler(object):
     def add_one_bookmark(self, title, page, parent = None, color = None, fit = '/Fit'):
         '''
         往PDF文件中添加单条书签，并且保存为一个新的PDF文件
+
         :param str title: 书签标题
         :param int page: 书签跳转到的页码，表示的是PDF中的绝对页码，值为1表示第一页
         :paran parent: A reference to a parent bookmark to create nested bookmarks.
@@ -165,17 +165,9 @@ class RFCPDFHandler(object):
                 layout = device.get_result()
                 for x in layout:
                     if isinstance(x, LTTextBoxHorizontal):  # 获取文本内容
-                        # 匹配文档中的目录，生成目录列表
-                        # with io.open(pdf_path+'_catalogue_of_rfc.txt', 'a', encoding='utf-8') as textfile:
-                        #     results = x.get_text()
-                        #     refilter = re.compile(r"[.][.]\d")
-                        #     replacefilter = re.compile(r"\ [.][.]*")
-                        #     for line in results.splitlines():
-                        #         if re.search(refilter, line):
-                        #             textfile.write(re.sub(replacefilter, '@', line) + "\n")
                         results = x.get_text()
                         refilter = re.compile(r"[.][.]\d")
-                        replacefilter = re.compile(r"\ [.][.]*")
+                        replacefilter = re.compile(r"\.[.][.]*")
                         for line in results.splitlines():
                             if re.search(refilter, line):
                                 line = re.sub(replacefilter, '@', line) + "\n"
